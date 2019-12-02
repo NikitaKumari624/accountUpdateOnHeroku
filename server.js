@@ -15,7 +15,6 @@ app.post('/update', function(req, res) {
         
         // watch for any connect issues
         if (err) console.log(err);
-        res.send(err);
         conn.query(
             'UPDATE salesforce.Contact SET Phone = $1, MobilePhone = $1 WHERE LOWER(FirstName) = LOWER($2) AND LOWER(LastName) = LOWER($3) AND LOWER(Email) = LOWER($4)',
             [req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
