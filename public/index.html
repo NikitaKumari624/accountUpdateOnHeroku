@@ -27,9 +27,10 @@
                 var lastName = $("#lastName").val();
                 var email = $("#email").val();
                 var phone = $("#phone").val();
-                var contactStatus = $("#contactStatus").val();
+                var e = document.getElementById("contactStatus");
+                var contactStatus = e.options[e.selectedIndex].value;
 
-                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
+                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0 || contactStatus == "") {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -51,7 +52,6 @@
                             $("#lastName").val("");
                             $("#email").val("");
                             $("#phone").val("");
-                            $("#contactStatus").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
@@ -100,7 +100,8 @@
                     </div>
                     <div class="form-group">
                         <label for="contactStatus">Contact Status</label>
-                        <select name="contactStatus">
+                        <select id="contactStatus">
+                          <option value="">--None--</option>
                           <option value="Active">Active</option>
                           <option value="Inactive">Inactive</option>
                         </select>
