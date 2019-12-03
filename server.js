@@ -17,7 +17,7 @@ app.post('/update', function(req, res) {
         if (err) console.log(err);
         //commit here
         conn.query(
-            'UPDATE salesforce.Contact SET Phone = $1, MobilePhone = $1, NK624__Contact_Status__c=$5 WHERE LOWER(FirstName) = LOWER($2) AND LOWER(LastName) = LOWER($3) AND LOWER(Email) = LOWER($4)',
+            'UPDATE salesforce.Contact SET Phone = $1, MobilePhone = $1, NK624__Contact_Status__c=$5, LOWER(Email) = LOWER($4) WHERE LOWER(FirstName) = LOWER($2) AND LOWER(LastName) = LOWER($3)',
             [req.body.phone.trim(), req.body.firstName, req.body.lastName.trim(), req.body.email.trim(),req.body.NK624__Contact_Status__c.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
