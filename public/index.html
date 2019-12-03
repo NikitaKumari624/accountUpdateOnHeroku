@@ -27,8 +27,9 @@
                 var lastName = $("#lastName").val();
                 var email = $("#email").val();
                 var phone = $("#phone").val();
+                var contactStatus = $("#contactStatus").val();
 
-                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
+                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0 || contactStatus.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -41,7 +42,7 @@
                             lastName: lastName,
                             email: email,
                             phone: phone,
-                            NK624__Contact_Status__c : NK624__Contact_Status__c
+                            NK624__Contact_Status__c : contactStatus
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -50,7 +51,7 @@
                             $("#lastName").val("");
                             $("#email").val("");
                             $("#phone").val("");
-                            $("#NK624__Contact_Status__c").val("");
+                            $("#contactStatus").val("");
                             $("#messageMessage").text("Record updated!");
                             $("#message").show();
                         },
@@ -98,8 +99,8 @@
                         <input type="tel" class="form-control" id="phone" placeholder="New Phone Number" required>
                     </div>
                     <div class="form-group">
-                        <label for="NK624__Contact_Status__c">Clean Status</label>
-                        <select name="NK624__Contact_Status__c">
+                        <label for="contactStatus">Contact Status</label>
+                        <select name="contactStatus">
                           <option value="Active">Active</option>
                           <option value="Inactive">Inactive</option>
                         </select>
