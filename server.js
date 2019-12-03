@@ -18,11 +18,11 @@ app.post('/update', function(req, res) {
         //commit here
         conn.query(
             'UPDATE salesforce.Contact SET Phone = $1, MobilePhone = $1, NK624__Contact_Status__c=$6 WHERE LOWER(FirstName) = LOWER($2) AND LOWER(LastName) = LOWER($3) AND LOWER(Email) = LOWER($4)',
-            [req.body.phone.trim(), req.body.firstName.trim(), req.body.contactStatus.trim(), req.body.lastName.trim(), req.body.email.trim()],
+            [req.body.phone.trim(), req.body.firstName.trim(), req.body.NK624__Contact_Status__c.trim(), req.body.lastName.trim(), req.body.email.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   conn.query('INSERT INTO salesforce.Contact (Phone, MobilePhone, NK624__Contact_Status__c, FirstName, LastName, Email) VALUES ($1, $2, $3, $4, $5,$6)',
-                  [req.body.phone.trim(), req.body.phone.trim(), req.body.contactStatus.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
+                  [req.body.phone.trim(), req.body.phone.trim(), req.body.NK624__Contact_Status__c.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
                   function(err, result) {
                     done();
                     if (err) {
